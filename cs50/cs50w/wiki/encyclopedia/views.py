@@ -1,136 +1,140 @@
-from random import randint
-from django.shortcuts import render, redirect
-from django.http import Http404
-from django.contrib import messages
+import random
+
 from django import forms
-from markdown2 import Markdown
+from django.shortcuts import render
 
 from . import util
 
+from markdown2 import Markdown
 
-class NewEntryForm(forms.Form):
-    title = forms.CharField(
-        required=True,
-        label="",
-        widget=forms.TextInput(
-            attrs={"placeholder": "Title", "class": "mb-4"}
-        ),
-    )
-    content = forms.CharField(
-        required=True,
-        label="",
-        widget=forms.Textarea(
-            attrs={
-                "class": "form-control mb-4",
-                "placeholder": "Content (markdown)",
-                "id": "new_content",
-            }
-        ),
-    )
+markdowner = Markdown()
 
+
+class Search(forms.Form):
+    item = forms.CharField(widget=forms.TextInput(attrs={'class' : 'myfieldclass', 'placeholder': 'Search'}))
+
+class Post(forms.Form):
+    title = forms.CharField(label= "Title")
+    textarea = forms.CharField(widget=forms.Textarea(), label='')
+
+class Edit(forms.Form):
+    textarea = forms.CharField(widget=forms.Textarea(), label='')
 
 def index(request):
-    return render(
-        request, "encyclopedia/index.html", {"entries": util.list_entries()}
-    )
-
-
-def wiki(request, entry):
-    if entry not in util.list_entries():
-        raise Http404
-    content = util.get_entry(entry)
-    return render(
-        request,
-        "encyclopedia/wiki.html",
-        {"title": entry, "content": Markdown().convert(content)},
-    )
-
-
-def search(request):
-    query = request.GET.get("q", "")
-    if query is None or query == "":
-        return render(
-            request,
-            "encyclopedia/search.html",
-            {"found_entries": "", "query": query},
-        )
-
     entries = util.list_entries()
+    searched = []
+    if request.method == "POST":
+        form = Search(request.POST)
+        if form.is_valid():
+            item = form.cleaned_data["item"]
+            for i in entries:
+                if item in entries:
+                    page = util.get_entry(item)
+                    page_converted = markdowner.convert(page)
+                    
+                    context = {
+                        'page': page_converted,
+                        'title': item,
+                        'form': Search()
+                    }
 
-    found_entries = [
-        valid_entry
-        for valid_entry in entries
-        if query.lower() in valid_entry.lower()
-    ]
-    if len(found_entries) == 1:
-        return redirect("wiki", found_entries[0])
+                    return render(request, "encyclopedia/entry.html", context)
+                if item.lower() in i.lower(): 
+                    searched.append(i)
+                    context = {
+                        'searched': searched, 
+                        'form': Search()
+                    }
+            return render(request, "encyclopedia/search.html", context)
 
-    return render(
-        request,
-        "encyclopedia/search.html",
-        {"found_entries": found_entries, "query": query},
-    )
-
-
-def new(request):
-    if request.method == "GET":
-        return render(
-            request, "encyclopedia/new.html", {"form": NewEntryForm()}
-        )
-
-    form = NewEntryForm(request.POST)
-    if form.is_valid():
-        title = form.cleaned_data.get("title")
-        content = form.cleaned_data.get("content")
-
-        if title.lower() in [entry.lower() for entry in util.list_entries()]:
-            messages.add_message(
-                request,
-                messages.WARNING,
-                message=f'Entry "{title}" already exists',
-            )
         else:
-            with open(f"entries/{title}.md", "w") as file:
-                file.write(content)
-            return redirect("wiki", title)
-
+            return render(request, "encyclopedia/index.html", {"form": form})
     else:
-        messages.add_message(
-            request, messages.WARNING, message="Invalid request form"
-        )
+        return render(request, "encyclopedia/index.html", {
+            "entries": util.list_entries(), "form":Search()
+        })
 
-    return render(
-        request,
-        "encyclopedia/new.html",
-        {"form": form},
-    )
-
-
-def random_entry(request):
+def entry(request, title):
     entries = util.list_entries()
-    entry = entries[randint(0, len(entries) - 1)]
-    return redirect("wiki", entry)
+    if title in entries:
+        page = util.get_entry(title)
+        page_converted = markdowner.convert(page) 
+
+        context = {
+            'page': page_converted,
+            'title': title,
+            'form': Search()
+        }
+
+        return render(request, "encyclopedia/entry.html", context)
+    else:
+        return render(request, "encyclopedia/error.html", {"message": "The requested page was not found.", "form":Search()})
 
 
-def edit(request, entry):
-    if request.method == "GET":
-        title = entry
-        content = util.get_entry(title)
-        form = NewEntryForm({"title": title, "content": content})
-        return render(
-            request,
-            "encyclopedia/edit.html",
-            {"form": form, "title": title},
-        )
+def create(request):
+    if request.method == 'POST':
+        form = Post(request.POST)
+        if form.is_valid():
+            title = form.cleaned_data["title"]
+            textarea = form.cleaned_data["textarea"]
+            entries = util.list_entries()
+            if title in entries:
+                return render(request, "encyclopedia/error.html", {"form": Search(), "message": "Page already exist"})
+            else:
+                util.save_entry(title,textarea)
+                page = util.get_entry(title)
+                page_converted = markdowner.convert(page)
 
-    form = NewEntryForm(request.POST)
-    if form.is_valid():
-        title = form.cleaned_data.get("title")
-        content = form.cleaned_data.get("content")
+                context = {
+                    'form': Search(),
+                    'page': page_converted,
+                    'title': title
+                }
 
-        util.save_entry(title=title, content=content)
-        return redirect("wiki", title)
+                return render(request, "encyclopedia/entry.html", context)
+    else:
+        return render(request, "encyclopedia/create.html", {"form": Search(), "post": Post()})
 
 
-def handler404(request, *args):
-    return render(request, "404.html", {})
+def edit(request, title):
+    if request.method == 'GET':
+        page = util.get_entry(title)
+        
+        context = {
+            'form': Search(),
+            'edit': Edit(initial={'textarea': page}),
+            'title': title
+        }
+
+        return render(request, "encyclopedia/edit.html", context)
+    else:
+        form = Edit(request.POST) 
+        if form.is_valid():
+            textarea = form.cleaned_data["textarea"]
+            util.save_entry(title,textarea)
+            page = util.get_entry(title)
+            page_converted = markdowner.convert(page)
+
+            context = {
+                'form': Search(),
+                'page': page_converted,
+                'title': title
+            }
+
+            return render(request, "encyclopedia/entry.html", context)
+
+def randomPage(request):
+    if request.method == 'GET':
+        entries = util.list_entries()
+        num = random.randint(0, len(entries) - 1)
+        page_random = entries[num]
+        page = util.get_entry(page_random)
+        page_converted = markdowner.convert(page)
+
+        context = {
+            'form': Search(),
+            'page': page_converted,
+            'title': page_random
+        }
+
+        return render(request, "encyclopedia/entry.html", context)
