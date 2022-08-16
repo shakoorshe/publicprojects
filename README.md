@@ -1,3 +1,1 @@
-# publicprojects
-These projects range from code made for bootcamps to code made in my spare time. The projects made for bootcamps are in coumbiahackathon and CS50 folders .
-The spare time projects are in the file conviently named spares.
+**These are some of the public projects made by me during my spare time. Others were made for bootcamps from Columbia University or courses like CS50. The bootcamp code is in columbiahackathon and the CS50 code is in the cs50 code**
