@@ -1,0 +1,149 @@
+.card{
+  outline-color: purple;  
+  background-color: yellow;
+
+  }
+body {
+background-color: lightblue;
+}
+
+
+    h1 {
+    color: purple;
+    font-weight: bold;
+    font-size: 18px;
+
+}
+p {
+    color: purple;
+    font-weight: bold;
+    font-size: 18px;
+}
+img {
+    width: 500px;
+    height: 500px;
+}
+
+#go{
+    text-align: center;
+}
+
+#teams{
+    text-align: center;
+}
+
+#laker-info{
+    text-align: center;
+}
+
+.p-text{
+ font-size: 16.5px;
+ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+ float: left;
+ width: 67%;
+}
+
+.pics{
+    margin: 0%;
+    padding: 0%;
+    border: 10%;
+    height: 80%;
+    padding-bottom: 50px;
+}
+
+.font-for-h3{
+   font-size: 25px; 
+}
+
+#bob-short-img{
+height: 250px;
+width: 400px;
+padding-left: 175px;
+}
+
+#mohs-pic{
+    width: 350px;
+    height: 350px;
+    padding-left: 100px;
+}
+
+#pete-pic{
+    width: 400px;
+    height: 300px;
+    padding-left:150px ;
+}
+
+#fred-pic{
+    width: 400px;
+    height: 300px;
+    padding-left: 150px;
+}
+
+#BasketballInteractive{
+    position: fixed;
+    bottom: 0%;
+    right: 50%;
+}
+
+#BasketballImageInteractive{
+    height: 80%;
+    width: 80%;
+}
+
+#shaq-card{
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+#kobe-card{
+    margin-left: 33px;
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+
+img{
+    object-fit: cover;
+}
+#magic-card{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+#home-img{
+    padding-left: 30px;
+    width: 600px;
+
+}
+
+#body-home{
+background-color: rgb(240, 240, 145);
+}
+
+#west{
+    float: right;
+    width: 60%;
+    padding-left: 40px;
+    padding-right: 40px;
+    color: rgb(89, 8, 89);
+}
+
+#points{
+    font-size: 50px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#GameBackground{
+    padding: 10px;
+    height: 1000px;
+    width: 1800px;
+}
+
+#GameText{
+    position: absolute;
+    top: 75px;
+    left: 16px;
+    color: lightgoldenrodyellow;
+}

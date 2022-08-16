@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>Basketball Mini Game</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <!-- Navbar on top of screen-->
+    <nav class="navbar navbar-expand-lg" style="background-color: #d39ce0;">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="lakersHome.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="lakersjerseys.html">Lakers Jerseys</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="HOF.html">Hall of Fame</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="info.html">All About the Lakers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="FeatureOne.html">Basketball Mini Game</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<!--Container for text -->
+    <div id="GameText">
+        <h1>
+            Click on the Basketball to Score!
+        </h1>
+    <!--Container for points scored-->
+    <div id="points">Points=0</div>
+</div>
+
+    <!--Background basketball court image -->
+    <img id="GameBackground" src="https://media.istockphoto.com/photos/basketball-arena-picture-id468196540?k=20&m=468196540&s=170667a&w=0&h=aRfszCaowaufkX8NstKv8_QSIqabzFXhT3jNvfG8h0c="></img>
+    <!--Basketball image -->
+    <div id="BasketballInteractive">
+        <img id="BasketballImageInteractive" src="data:image/jpeg;base64,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"> 
+    </img>
+    </div>
+
+    <script type="text/javascript">
+    let ScorePoints = 0
+    let Basketball = $("#BasketballInteractive");
+    let Delay = 500;
+    let Position = 100;
+
+        // Uses setInterval function from "https://developer.mozilla.org/en-US/docs/Web/API/setInterval" to continuously repeat the function 
+         setInterval(function(){
+             // Sets Position to be random so that the ball is thrown at a random spot
+             // 90 is used instead of 100 to prevent the ball from moving too far left
+             Position = Math.floor(Math.random() * 90);
+             console.log(Position);
+         }, 100);
+        
+        // Uses setInterval function from "https://developer.mozilla.org/en-US/docs/Web/API/setInterval" to continuously repeat the function 
+        setInterval(function() {
+        // Moves the ball to a random position across the horizontal axis
+            Basketball.animate({right: Position + "%"}, "normal");
+        }, Delay);
+
+
+        //Increases the score by 1 each time the plater clicks
+
+        $(document).ready(function() {
+        $("#BasketballInteractive").on("click", function() {
+        ScorePoints++;
+        //References the HTML element to change the live score 
+        document.querySelector("#points").textContent = "Points = " + ScorePoints;
+
+})});
+
+    </script>
+</body>
+</html>
