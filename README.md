@@ -1,1 +1,1 @@
-**These projects were made for bootcamps from Columbia University and THE CODER SCHOOL or courses like CS50. The bootcamp codes are in columbiahackathon and TCSS. The CS50 projects is in the cs50 code.**
+**These projects were made for bootcamps from Columbia University and THE CODER SCHOOL or courses like CS50. The bootcamp codes are in columbiahackathon and TCSS. The CS50 projects are in the cs50 code.**
