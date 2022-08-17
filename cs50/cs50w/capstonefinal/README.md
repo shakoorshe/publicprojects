@@ -18,14 +18,7 @@ A personal website can let you make your pitch in front of people you might neve
 
 ![](theportfoliomaker.gif)
 
-&nbsp;
-
-:computer: &nbsp; **View project live [here](https://theportfoliomaker.herokuapp.com)**
-
-:arrow_forward: &nbsp; **View Video Presentation [here] https://youtu.be/Yg4qUTIrcLU
-
-&nbsp;
-
+**View project live [here](https://theportfoliomaker.herokuapp.com)**
 
 ## Distinctiveness and Complexity
 
@@ -104,7 +97,3 @@ Please see the appropriate guide for your environment of choice.
 - `python manage.py migrate`
 
 - `python manage.py runserver`
-
-### :man_astronaut: &nbsp; Show your support
-
-Give a ⭐️ if this project helped you!
