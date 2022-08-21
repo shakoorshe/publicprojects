@@ -5,6 +5,8 @@ turtleDrawer.getscreen().bgcolor("black")
 turtleDrawer.color("black")
 turtleDrawer.shape("turtle")
 turtleDrawer.goto(-200,0)
+turtleDrawer.speed(0)
+
 #M
 turtleDrawer.penup()
 turtleDrawer.right(180)
@@ -99,3 +101,6 @@ turtleDrawer.forward(20)
 turtleDrawer.end_fill()
 
 #H 
+turtle.exitonclick()
+turtleDrawer.right(180)
+turtleDrawer.forward(50)
