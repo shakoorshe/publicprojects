@@ -3,11 +3,12 @@ screen = turtle.Screen()
 screen.bgcolor("black")
 
 pen = turtle.Turtle()
-pen.speed(0)
 pen.color("white")
+pen.speed(0)
 
-size = 9412
-shape = 1651
+
+size = 4141
+shape = 200
 
 for i in range(size):
   pen.forward(i)
