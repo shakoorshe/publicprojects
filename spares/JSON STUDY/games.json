@@ -1,0 +1,45 @@
+{
+    "EA": [
+        {
+            "ticker": "EA",
+            "CEO": "Trip Hawkins",
+            "Owner": "Amazon",
+            "games": [
+                "Apex Legends",
+                "The FIFA series",
+                "The MADDEN series",
+                "The NHL series",
+                "The Formula 1 series",
+                "PGA golf series",
+                "Super Mega Baseball",
+                "The UFC fighting game series",
+                "NBA LIVE SERIES(may be discontinued)",
+                "Plenty of tennis games",
+                "NBA JAM"
+            ],
+            "Company value": "34.75 Billion Dollars",
+            "rating": "5/5",
+            "Number of Employees": "12.9K"
+        }
+    ],
+    "ACTIVISION": [
+        {
+            "ticker": "ATVI",
+            "CEO(s)": "Daniel Alegre and Frances Townsend",
+            "games": [
+                "The Battle.net platform",
+                "THE Call Of Duty series",
+                "Overwatch",
+                "World of Warcraft",
+                "Hearthstone",
+                "The Diablo Series",
+                "StarCraft",
+                "Crash Bandicoot",
+                "Blizzard Arcade Collection"
+            ],
+            "Company value": "57.35 Billion Dollars",
+            "rating": "5/5",
+            "numberOfEmployees": "As of 2021, there was 9800 employees"
+        }
+    ]
+}

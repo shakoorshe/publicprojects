@@ -1,0 +1,29 @@
+{
+    "Apple": [
+        {
+            "ticker": "AAPL",
+            "CEO": "Steve Jobs",
+            "products": [
+                "IPHONE",
+                "Apple Watch",
+                "Macbook and Macbook Pro"
+            ],
+            "Company value": "3 trillion dollars",
+            "rating": "5/5",
+            "numberOfEmployees": "154 thousand"
+        }
+    ],
+    "Microsoft": [
+        {
+            "ticker": "MSFT",
+            "CEO": "Bill Gates",
+            "products": [
+                "PCs of any kind",
+                "Windows Operating System"
+            ],
+            "Company value": "1.8 trillion dollars",
+            "rating": "5/5",
+            "numberOfEmployees": "221 thousand"
+        }
+    ]
+}

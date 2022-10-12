@@ -1,0 +1,23 @@
+{
+    "Name": "Matthew",
+    "favoriteNumber": "13",
+    "Hobbies": [
+        "Playing video games",
+        "Coding",
+        "Playing and watching baseball"
+    ],
+    "isProgrammer": true,
+    "favoritePhrase": "I will send you to Jesus",
+    "friends": [
+        {
+            "Name": "Ryker",
+            "isProgrammer": false,
+            "favoriteNumber": 34,
+            "Hobbies": [
+                "Car drifting in Forza",
+                "Hanging out with Matthew"
+            ],
+            "favoritePhrase": "DFA"
+        }
+    ]
+}
