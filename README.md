@@ -1,1 +1,1 @@
-**These projects were made for bootcamps from Columbia University or courses like CS50. The bootcamp code is in columbiahackathon and the CS50 projects is in the cs50 code. Any spare code I made in my free time are located in the spares file.**
+**These projects were made for bootcamps from Columbia University or courses like CS50. The bootcamp code is in columbiahackathon and the CS50 projects is in the cs50 code. Any spare code I made in my free time are located in the spares file. Here is a link to all of my best work: http://localhost:52330/github%20links/links.html**
