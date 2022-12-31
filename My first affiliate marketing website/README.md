@@ -1,0 +1,1 @@
+**I wanted to get into affiliate marketing ever since I learned what it was. Because of this, I created a makeshift affiliate marketing website.**

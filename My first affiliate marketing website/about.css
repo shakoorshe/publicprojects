@@ -1,0 +1,26 @@
+/* Set the font and font size for the text message */
+p {
+    font-family: Arial, sans-serif;
+    font-size: 30px;
+}
+
+/* Add a background color to the text message */
+p {
+    background-color: #f1f1f1;
+}
+
+/* Add some padding and a border to the text message */
+p {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+/* Add a rounded corner to the text message */
+p {
+    border-radius: 5px;
+}
+
+/* Add a hover effect to the text message */
+p:hover {
+    background-color: #e9e9e9;
+}
